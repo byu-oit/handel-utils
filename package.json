@@ -1,0 +1,28 @@
+{
+    "name": "handel-utils",
+    "version": "0.1.0",
+    "description": "Utility library for apps deployed using handel and handel-codepipeline",
+    "main": "index.js",
+    "directories": {
+        "lib": "lib"
+    },
+    "scripts": {
+        "lint": "standard --fix",
+        "pretest": "standard --fix",
+        "test": "tape test/*.js | tap-spec"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/byu-oit/handel-utils.git"
+    },
+    "author": "Aaron Rasmussen <aaron_rasmussen@byu.edu>",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/byu-oit/handel-utils/issues"
+    },
+    "homepage": "https://github.com/byu-oit/handel-utils#readme",
+    "devDependencies": {
+        "tap-spec": "^4.1.1",
+        "tape": "^4.7.0"
+    }
+}
