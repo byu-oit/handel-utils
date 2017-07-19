@@ -3,6 +3,7 @@ Utility library for apps deployed using [handel](https://github.com/byu-oit/hand
 [handel-codepipeline](https://github.com/byu-oit/handel-codepipeline)
 
 # Environment Variables
+Functions to deal with environment variables injected by Handel
 
 ## getVariable
 Retrieves the value of an environment variable injected by Handel
@@ -48,3 +49,32 @@ The valid service types are:
 - s3
 - sns
 - sqs
+
+# Parameter Store Values
+Retrieve a set of values scoped under your Handel application from the AWS EC2 Parameter Store
+
+## fetchParameters
+Retrieves values from EC2 Parameter Store
+
+Parameters: 
+- `AWS`: An instance of the AWS node api. Be sure to set the region correctly.
+- `keyList`: An array of keys to retrieve. Each one will be prefixed with the app name and
+    environment name from Handel.
+
+Example:
+```
+const AWS = require('aws-sdk')
+AWS.config.update({region: 'us-west-2'});
+
+fetchParameters(AWS, ['mykey1', 'nested.key2']).then(data => {
+  /*
+    data will be equal to:
+    {
+      mykey1: 'MyValue1',
+      nested: {
+        key2: 'MyNestedValue2'
+      }
+    }
+  */
+})
+```
