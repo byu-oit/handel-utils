@@ -1,6 +1,5 @@
 const test = require('tape')
 const util = require('../index')
-// const _ = require('lodash')
 
 const testVars = {
   HANDEL_APP_NAME: 'test-app',

@@ -16,5 +16,6 @@
 **/
 'use strict'
 
-const env = require('./lib/env.js')
-module.exports = Object.assign({}, env)
+const env = require('./lib/env')
+const parameterStore = require('./lib/parameterStore')
+module.exports = Object.assign({}, env, parameterStore)
