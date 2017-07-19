@@ -1,6 +1,6 @@
 {
     "name": "handel-utils",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "Utility library for apps deployed using handel and handel-codepipeline",
     "main": "index.js",
     "directories": {
