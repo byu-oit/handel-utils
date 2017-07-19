@@ -3,10 +3,10 @@ const util = require('../index')
 // const _ = require('lodash')
 
 const testVars = {
-  HANDEL_APP_NAME: 'TEST_APP',
-  HANDEL_ENVIRONMENT_NAME: 'DEV',
-  HANDEL_SERVICE_NAME: 'TESTARTIFACT',
-  HANDEL_SERVICE_VERSION: 'V1',
+  HANDEL_APP_NAME: 'test-app',
+  HANDEL_ENVIRONMENT_NAME: 'dev',
+  HANDEL_SERVICE_NAME: 'TestArtifact',
+  HANDEL_SERVICE_VERSION: 'v1',
   DYNAMODB_TEST_APP_DEV_MYTABLE_TABLE_NAME: 'mytable',
   DYNAMODB_TEST_APP_DEV_MYTABLE_TABLE_ARN: 'arn:faketestvaluefortable',
   EFS_TEST_APP_DEV_MYEFS_MOUNT_DIR: '/fake/mountdir',
@@ -48,10 +48,10 @@ const serviceList = [
 test('Handel Environment', assert => {
   const actual = util.handelEnv()
   const expected = {
-    appName: 'TEST_APP',
-    envName: 'DEV',
-    serviceName: 'TESTARTIFACT',
-    serviceVersion: 'V1'
+    appName: 'test-app',
+    envName: 'dev',
+    serviceName: 'TestArtifact',
+    serviceVersion: 'v1'
   }
   assert.deepEqual(actual, expected, 'Correctly loaded handel common variables')
   assert.end()
@@ -74,9 +74,17 @@ test('Each service prefix', assert => {
 })
 
 test('Service variable', assert => {
-  const actual = util.getVariable('s3', 'MYBUCKET', 'BUCKET_NAME')
-  const expected = 'my_bucket'
-  assert.equal(actual, expected, 'Correctly retrieved a variable')
+  {
+    const actual = util.getVariable('s3', 'MYBUCKET', 'BUCKET_NAME')
+    const expected = 'my_bucket'
+    assert.equal(actual, expected, 'Correctly retrieved a variable')
+  }
+
+  {
+    const actual = util.getVariable('s3', 'MyBucket', 'bucket_name')
+    const expected = 'my_bucket'
+    assert.equal(actual, expected, 'Correctly retrieved a variable with lowercase parameters')
+  }
 
   assert.throws(() => util.getVariable('invalid', 'ITEM', 'VAR_NAME'), /is not a recognized handel service/, 'Expected invalid service name to throw an error')
 
