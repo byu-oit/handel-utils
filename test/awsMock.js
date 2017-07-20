@@ -3,7 +3,8 @@ const parmStore = {
   'test-app.dev.myKey1': 'MyValue1',
   'test-app.dev.myKey2': 'MyValue2',
   'test-app.dev.encryptedKey1': 'EncryptedValue1',
-  'test-app.dev.encryptedKey2': 'EncryptedValue2'
+  'test-app.dev.encryptedKey2': 'EncryptedValue2',
+  'test-app.dev.nested.key1': 'NestedValue1'
 }
 
 const getParameters = params => {

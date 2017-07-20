@@ -15,7 +15,6 @@ test('Fetch Parameters', assert => {
   assert.plan(5)
 
   util.fetchParameters(AWS, ['myKey1', 'encryptedKey1']).then(actual => {
-    assert.comment('got results!' + actual)
     const expected = {
       myKey1: 'MyValue1',
       encryptedKey1: 'EncryptedValue1'
@@ -23,12 +22,15 @@ test('Fetch Parameters', assert => {
     assert.deepEqual(actual, expected, 'Correctly fetched parameters')
   })
 
-  util.fetchParameters(AWS, ['myKey2', 'encryptedKey2']).then(actual => {
+  util.fetchParameters(AWS, ['myKey2', 'encryptedKey2', 'nested.key1']).then(actual => {
     const expected = {
       myKey2: 'MyValue2',
-      encryptedKey2: 'EncryptedValue2'
+      encryptedKey2: 'EncryptedValue2',
+      nested: {
+        key1: 'NestedValue1'
+      }
     }
-    assert.deepEqual(actual, expected, 'Correctly fetched parameters 2')
+    assert.deepEqual(actual, expected, 'Correctly fetched nested key')
   })
 
   util.fetchParameters(AWS, ['myKey1', 'myKey2', 'encryptedKey1', 'encryptedKey2']).then(actual => {
