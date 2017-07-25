@@ -6,8 +6,8 @@ const testVars = {
   HANDEL_ENVIRONMENT_NAME: 'dev',
   HANDEL_SERVICE_NAME: 'TestArtifact',
   HANDEL_SERVICE_VERSION: 'v1',
-  DYNAMODB_TEST_APP_DEV_MYTABLE_TABLE_NAME: 'mytable',
-  DYNAMODB_TEST_APP_DEV_MYTABLE_TABLE_ARN: 'arn:faketestvaluefortable',
+  DYNAMODB_TEST_APP_DEV_MY_TABLE_TABLE_NAME: 'mytable',
+  DYNAMODB_TEST_APP_DEV_MY_TABLE_TABLE_ARN: 'arn:faketestvaluefortable',
   EFS_TEST_APP_DEV_MYEFS_MOUNT_DIR: '/fake/mountdir',
   MEMCACHED_TEST_APP_DEV_MYELASTICACHE_ADDRESS: 'my_cache.fake.com',
   MEMCACHED_TEST_APP_DEV_MYELASTICACHE_PORT: '9999',
@@ -83,6 +83,12 @@ test('Service variable', assert => {
     const actual = util.getVariable('s3', 'MyBucket', 'bucket_name')
     const expected = 'my_bucket'
     assert.equal(actual, expected, 'Correctly retrieved a variable with lowercase parameters')
+  }
+
+  {
+    const actual = util.getVariable('dynamodb', 'my-table', 'table_name')
+    const expected = 'mytable'
+    assert.equal(actual, expected, 'Correctly retrieve a variable with dashes')
   }
 
   assert.throws(() => util.getVariable('invalid', 'ITEM', 'VAR_NAME'), /is not a recognized handel service/, 'Expected invalid service name to throw an error')

@@ -64,7 +64,7 @@ Parameters:
 Example:
 ```
 const AWS = require('aws-sdk')
-AWS.config.update({region: 'us-west-2'});
+AWS.config.update({region: 'us-west-2'})
 
 fetchParameters(AWS, ['mykey1', 'nested.key2']).then(data => {
   /*
