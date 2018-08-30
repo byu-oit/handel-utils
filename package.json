@@ -1,6 +1,6 @@
 {
     "name": "handel-utils",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "description": "Utility library for apps deployed using handel and handel-codepipeline",
     "main": "index.js",
     "directories": {
@@ -22,10 +22,10 @@
     },
     "homepage": "https://github.com/byu-oit/handel-utils#readme",
     "devDependencies": {
-        "tap-spec": "^4.1.1",
+        "tap-spec": "^5.0.0",
         "tape": "^4.7.0"
     },
     "dependencies": {
-        "lodash": "^4.17.4"
+        "lodash": "^4.17.10"
     }
 }
