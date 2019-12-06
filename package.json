@@ -1,6 +1,6 @@
 {
     "name": "handel-utils",
-    "version": "2.0.3",
+    "version": "2.0.4",
     "description": "Utility library for apps deployed using handel and handel-codepipeline",
     "main": "index.js",
     "directories": {
@@ -9,7 +9,8 @@
     "scripts": {
         "lint": "standard --fix",
         "pretest": "standard --fix",
-        "test": "tape test/test*.js | tap-spec"
+        "test": "tape test/test*.js | tap-spec",
+        "release": "standard-version"
     },
     "repository": {
         "type": "git",
@@ -22,6 +23,7 @@
     },
     "homepage": "https://github.com/byu-oit/handel-utils#readme",
     "devDependencies": {
+        "standard-version": "^7.0.1",
         "tap-spec": "^5.0.0",
         "tape": "^4.11.0"
     },
