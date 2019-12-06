@@ -23,7 +23,7 @@
     "homepage": "https://github.com/byu-oit/handel-utils#readme",
     "devDependencies": {
         "tap-spec": "^5.0.0",
-        "tape": "^4.7.0"
+        "tape": "^4.11.0"
     },
     "dependencies": {
         "lodash": "^4.17.10"
