@@ -21,7 +21,7 @@ const getParameters = params => {
         o.InvalidParameters.push(n)
       }
       return o
-    }, {Parameters: [], InvalidParameters: []})
+    }, { Parameters: [], InvalidParameters: [] })
   )
   return { promise }
 }

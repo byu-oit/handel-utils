@@ -52,10 +52,10 @@ test('Fetch Parameters', assert => {
   })
 
   util.fetchParameters(BADAWS, ['myKey1'])
-  .then(data => {
-    assert.fail('Didn\'t throw error with bad connection')
-  })
-  .catch(() => {
-    assert.pass('Correctly throws error if bad connection')
-  })
+    .then(data => {
+      assert.fail('Didn\'t throw error with bad connection')
+    })
+    .catch(() => {
+      assert.pass('Correctly throws error if bad connection')
+    })
 })
