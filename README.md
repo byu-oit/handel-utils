@@ -42,20 +42,20 @@ Example result:
 # Parameter Store Values
 Retrieve a set of values scoped under your Handel application from the AWS EC2 Parameter Store
 
-## fetchParameters
+## fetchParametersByPath
 Retrieves values from EC2 Parameter Store
 
 Parameters: 
 - `AWS`: An instance of the AWS node API. Be sure to set the region correctly.
-- `keyList`: An array of keys to retrieve. Each one will be prefixed with the app name and
-    environment name from Handel.
+- `keyList`: An array of keys to retrieve. Each one will be prefixed with the
+  parameter store path from Handel.
 
 Example:
 ```
 const AWS = require('aws-sdk')
 AWS.config.update({region: 'us-west-2'})
 
-fetchParameters(AWS, ['mykey1', 'nested.key2']).then(data => {
+fetchParametersByPath(AWS, ['mykey1', 'nested/key2']).then(data => {
   /*
     data will be equal to:
     {
@@ -67,3 +67,6 @@ fetchParameters(AWS, ['mykey1', 'nested.key2']).then(data => {
   */
 })
 ```
+
+You can also use the older `fetchParameters` function if using an old version of Handel that
+wired permissions with environment and application joined with `.`
