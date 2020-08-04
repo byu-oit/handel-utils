@@ -23,11 +23,11 @@
     },
     "homepage": "https://github.com/byu-oit/handel-utils#readme",
     "devDependencies": {
-        "standard-version": "^7.0.1",
+        "standard-version": "^8.0.2",
         "tap-spec": "^5.0.0",
-        "tape": "^4.11.0"
+        "tape": "^5.0.1"
     },
     "dependencies": {
-        "lodash": "^4.17.10"
+        "lodash": "^4.17.19"
     }
 }
