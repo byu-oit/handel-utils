@@ -7,6 +7,7 @@ const testVars = {
   HANDEL_SERVICE_NAME: 'TestArtifact',
   HANDEL_SERVICE_VERSION: 'v1',
   HANDEL_PARAMETER_STORE_PREFIX: 'test-app.dev',
+  HANDEL_PARAMETER_STORE_PATH: '/test-app/dev/',
   MY_TABLE_TABLE_NAME: 'mytable',
   MY_TABLE_TABLE_ARN: 'arn:faketestvaluefortable',
   MYEFS_MOUNT_DIR: '/fake/mountdir',
@@ -40,7 +41,8 @@ test('Handel Environment', assert => {
     envName: 'dev',
     serviceName: 'TestArtifact',
     serviceVersion: 'v1',
-    parameterStorePrefix: 'test-app.dev'
+    parameterStorePrefix: 'test-app.dev',
+    parameterStorePath: '/test-app/dev/'
   }
   assert.deepEqual(actual, expected, 'Correctly loaded handel common variables')
   assert.end()

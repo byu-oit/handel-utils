@@ -4,7 +4,12 @@ const parmStore = {
   'test-app.dev.myKey2': 'MyValue2',
   'test-app.dev.encryptedKey1': 'EncryptedValue1',
   'test-app.dev.encryptedKey2': 'EncryptedValue2',
-  'test-app.dev.nested.key1': 'NestedValue1'
+  'test-app.dev.nested.key1': 'NestedValue1',
+  '/test-app/dev/myKey3': 'MyValue3',
+  '/test-app/dev/myKey4': 'MyValue4',
+  '/test-app/dev/encryptedKey3': 'EncryptedValue3',
+  '/test-app/dev/encryptedKey4': 'EncryptedValue4',
+  '/test-app/dev/nested/key2': 'NestedValue2'
 }
 
 const getParameters = params => {

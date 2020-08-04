@@ -59,3 +59,52 @@ test('Fetch Parameters', assert => {
       assert.pass('Correctly throws error if bad connection')
     })
 })
+
+test('Fetch Parameters by Path', assert => {
+  assert.plan(5)
+
+  util.fetchParametersByPath(AWS, ['myKey3', 'encryptedKey3']).then(actual => {
+    const expected = {
+      myKey3: 'MyValue3',
+      encryptedKey3: 'EncryptedValue3'
+    }
+    assert.deepEqual(actual, expected, 'Correctly fetched parameters')
+  })
+
+  util.fetchParametersByPath(AWS, ['myKey4', 'encryptedKey4', 'nested/key2']).then(actual => {
+    const expected = {
+      myKey4: 'MyValue4',
+      encryptedKey4: 'EncryptedValue4',
+      nested: {
+        key2: 'NestedValue2'
+      }
+    }
+    assert.deepEqual(actual, expected, 'Correctly fetched nested key')
+  })
+
+  util.fetchParametersByPath(AWS, ['myKey3', 'myKey4', 'encryptedKey3', 'encryptedKey4']).then(actual => {
+    const expected = {
+      myKey3: 'MyValue3',
+      encryptedKey3: 'EncryptedValue3',
+      myKey4: 'MyValue4',
+      encryptedKey4: 'EncryptedValue4'
+    }
+    assert.deepEqual(actual, expected, 'Correctly fetched all parameters')
+  })
+
+  util.fetchParametersByPath(AWS, ['myKey3', 'invalidKey']).then(actual => {
+    const expected = {
+      myKey3: 'MyValue3',
+      invalidKey: null
+    }
+    assert.deepEqual(actual, expected, 'Correctly fetched with invalid parameter')
+  })
+
+  util.fetchParametersByPath(BADAWS, ['myKey3'])
+    .then(data => {
+      assert.fail('Didn\'t throw error with bad connection')
+    })
+    .catch(() => {
+      assert.pass('Correctly throws error if bad connection')
+    })
+})
